@@ -31,19 +31,64 @@ Redux:
                 -We can create the action through the action creator.
                 -EX:
                     const incsNumber = (num) =>{
-                        return [
+                        return {
                             type:INCREMENT,
                             payload: num
-                        ]
+                        }
                     }
         - Reducer
             - How to do
+            - It is bassicaly a function that will take current state and an action as argument and return a new state result.
+            - ex:
+                const intitialState=0
+                const changeTheNumber =(state=intitialState,action)=>{
+                    switch(action.type){
+                        case "INCREMENT":
+                            return state+action.payload
+                        default:
+                        return state
+                    }
+                }
+
         - Store
-             object which holds the state of the application
-        - Dispatch:(function associated with store)
+            - object which holds the state of the application
+            -  This brings together all state,actions, reducer and make up your app.
+            - you will ahve only a single store in a resux
+            every redux store has a singke reducer function
+            -EX:
+                import {createStore} from 'redux'
+                const store=createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+        - (function associated with store)
             - crateStore()
             - diaptch(action)
             - getState()
+
+        * state to props
+            const mapStateToProps=(state)=>{
+                return {
+                    counter:state.reducer_name.nameOfKeyInStateReducer
+                }
+                }
+
+        * dispathing:
+            const mapDispatchToProps= (dispatch) =>{
+                return{
+                    increment: ()=>dispatch(actionCreators.incCounter()),
+                    decrement: () => dispatch(actionCreators.decCounter()),
+                    value: (e) => dispatch(actionCreators.addValue(e))
+                }
+                }
+
+            - we can use the increment ,decrement and value(e) as the function in to change state.
+
+        * connect redux store to app:
+            <Provider store={store}>
+                <App />
+            </Provider>
+
+        * connect all the things like reducer to app or react to redux
+            import {connect} from 'react-redux'
+            export default connect(mapStateToProps,mapDispatchToProps)(App);
 
 
 
