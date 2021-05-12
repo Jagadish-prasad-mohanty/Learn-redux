@@ -1,0 +1,51 @@
+*How react pass the data?
+    - Normally the react pass the data by storing the data in state tehn passing by props.
+    - but it is unidirectional. means on ly parent can provide the data to the children compoennts.
+    - So there is a concept of prop driling in which we can pass the data one one component but it is a tedious process.
+
+    - In react hook:
+        Context API and use content:
+            - Simply we have to store data in the provider and then we have to wrap the app with that and then access any where in the programm through consumer.
+
+    - Redux:
+        Simply we have a store in which we have to store data and tehn any of the component which need the daat then we can provide data from the store.
+
+    
+Redux:
+    - Reudx is a predictable state container for the react.
+    -Redux is a pattern and library for mannaging and updating the applicatuon state, using events called 'action' .
+    - It serves as centralized store for state that needs to be used accross your entire application, with rules ensuring that the state can only be updated in a predicatable fashion(which component call and how it update).
+
+    *Main topic:
+        - Action 
+            - What to do?
+            -Plain javascript object having a type field and payload
+            - Type specifies the action name and the playload provide teh data for the same.
+            Ex:
+                return{
+                    type:INCREMENT,
+                    payload: num(5)
+                }
+
+            * Action creator
+                -We can create the action through the action creator.
+                -EX:
+                    const incsNumber = (num) =>{
+                        return [
+                            type:INCREMENT,
+                            payload: num
+                        ]
+                    }
+        - Reducer
+            - How to do
+        - Store
+             object which holds the state of the application
+        - Dispatch:(function associated with store)
+            - crateStore()
+            - diaptch(action)
+            - getState()
+
+
+
+
+
